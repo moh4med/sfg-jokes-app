@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/jokes")
 public class JokesController {
-    JokeService jokeService;
+    private final JokeService jokeService;
 
     public JokesController(JokeService jokeService) {
         this.jokeService = jokeService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String getRandomJoke(Model model){
         String joke=jokeService.getJoke();
         model.addAttribute("joke",joke);
